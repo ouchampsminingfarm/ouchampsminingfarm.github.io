@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>OMF</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<link rel="stylesheet" type="text/css" href="css/aure.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+
+<body>
+    
+
+<!--Navbar bootstrap starts-->
+<nav class="navbar" id="navbar">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" data-toggle="open-navbar1">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="#">
+        <h4>Ouchamps<span> Mining </span>Farm</h4>
+      </a>
+    </div>
+
+    <div class="navbar-menu" id="open-navbar1">
+      <ul class="navbar-nav">
+        <li class="active"></li>
+        <!-- <li><a href="groupes.html">Groupes</a></li> -->
+        <!-- <li><a href="photos.html">Photos</a></li> -->
+        <!-- <li><a href="about.html">A propos</a></li> -->
+        <!-- <li><a href="#foot">Contact</a></li> -->
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container ethermineContainer">
+  <hr>
+  <div class="row">
+    <div class="col-sm">
+      <h2>Ethermine Mining Stats</h2>
+    </div>
+    <div class="col-sm">
+      <p class="ethermineDate"></p>
+    </div>
+    <div class="col-sm">
+      <p class="ethermineActiveWorkers"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <p class="ethermineCurrentHashRate"></p>
+    </div>
+    <div class="col-sm">
+      <p class="ethermineReportedHashrate"></p>
+    </div>
+    <div class="col-sm">
+      <p class="ethermineCoinsPerDay"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <p class="ethermineValidShares"></p>
+    </div>
+    <div class="col-sm">
+      <p class="ethermineStaleshares"></p>
+    </div>
+    <div class="col-sm">
+      <p class="ethermineInvalidShares"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  $( document ).ready(function() {
+ 
+    $.get( "https://ctxc.2miners.com/api/accounts/0x277e50882683b8e94585f0116d6806176304af6b", function( data ) {
+
+console.log(data)
+
+    });
+
+$.get( "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard", function( data, coinsperday ) {
+
+  var results = data
+  var lastHR = results.data.statistics[99]
+  
+  var activeWorkers = results.data.statistics[99].activeWorkers
+  var currentHashrate1 = results.data.statistics[99].currentHashrate/1000000
+  var currentHashrateToString = currentHashrate1.toString();
+  var currentHashrate = currentHashrateToString.substring(0, 6)
+  var invalidShares = results.data.statistics[99].invalidShares
+  var reportedHashrate1 = results.data.statistics[99].reportedHashrate/1000000
+  var reportedHashrateToString = reportedHashrate1.toString();
+  var reportedHashrate = reportedHashrateToString.substring(0, 6);
+  var staleShares = results.data.statistics[99].staleShares
+  var timeStamp = results.data.statistics[99].time
+  var validShares = 304
+
+  $.get( "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/currentStats", function( data ) {
+  var results2 = data
+  var coinsPerMinute = results2.data.usdPerMin*60
+  var coinsperday = coinsPerMinute*24
+  var coinsPerdayString = coinsperday.toString();
+  var coinsPerday = coinsPerdayString.substring(0, 5);
+  $('.ethermineCoinsPerDay').html('Revenue sur 24h <br>' + coinsPerday + "$")
+});
+
+function format_date(date, timeStamp) {
+  month=date.getMonth();
+  month=month+1; //javascript date goes from 0 to 11
+  if (month<10) month="0"+month; //adding the prefix
+  year=date.getFullYear();
+  day=date.getDate();
+  hour=date.getHours();
+  minutes=date.getMinutes();
+  return day+"/"+month+"/"+year+" "+hour+":"+minutes;
+}
+
+MyDate = new Date(timeStamp*1000);
+formatedDate=format_date(MyDate);
+  console.log(lastHR)
+  $('.ethermineDate').html('Date <br>' + formatedDate)
+  $('.ethermineActiveWorkers').html('Active Workers <br>' + activeWorkers)
+  $('.ethermineCurrentHashRate').html('Current HashRate <br>' + currentHashrate + 'MH/s')
+  $('.ethermineReportedHashrate').html('Reported HashRate <br>' + reportedHashrate + 'MH/s')
+  $('.ethermineValidShares').html('Valid shares <br>' + validShares)
+  $('.ethermineStaleshares').html('Stale Shares <br>' + staleShares)
+  $('.ethermineInvalidShares').html('Invalid Shares <br>' + invalidShares)
+});
+$('.ethermineContainer').show()
+
+
+
+
+
+
+
+});
+
+
+
+
+</script>
+
+    
+</body>
+
+
+<script src="js/aure.js"></script>
+<script src="js/news.js"></script>
+<script src="https://spreadsheets.google.com/feeds/cells/1Amz1eO8mWDb0XE6_cRuB6yKReAE6nrcrPDOSDfygeZg/1/public/values?alt=json-in-script&callback=doData"></script>
+
+</html>
+
+<!-- Follow me on Github : https://github.com/YannTarot -->
