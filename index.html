@@ -2,48 +2,113 @@
 <html>
 
 <head>
-    <title>OMF</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>OMF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
-<link rel="stylesheet" type="text/css" href="css/aure.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"
+  integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg=="
+  crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+  integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA=="
+  crossorigin="anonymous" />
 
 <body>
-    
 
-<!--Navbar bootstrap starts-->
-<nav class="navbar" id="navbar">
-  <div class="container">
 
-    <div class="navbar-header">
-      <button class="navbar-toggler" data-toggle="open-navbar1">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a href="#">
-        <h4>Ouchamps<span> Mining </span>Farm</h4>
-      </a>
+  <!--Navbar bootstrap starts-->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button class="navbar-toggler" data-toggle="open-navbar1">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a href="#">
+          <h4>Ouchamps<span> Mining </span>Farm</h4>
+        </a>
+      </div>
+
+      <div class="navbar-menu" id="open-navbar1">
+        <ul class="navbar-nav">
+          <li class="active"></li>
+          <!-- <li><a href="groupes.html">Groupes</a></li> -->
+          <!-- <li><a href="photos.html">Photos</a></li> -->
+          <!-- <li><a href="about.html">A propos</a></li> -->
+          <!-- <li><a href="#foot">Contact</a></li> -->
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <div class="navbar-menu" id="open-navbar1">
-      <ul class="navbar-nav">
-        <li class="active"></li>
-        <!-- <li><a href="groupes.html">Groupes</a></li> -->
-        <!-- <li><a href="photos.html">Photos</a></li> -->
-        <!-- <li><a href="about.html">A propos</a></li> -->
-        <!-- <li><a href="#foot">Contact</a></li> -->
+
+  <div class="row">
+    <div class="card col-sm-3">
+      <img src="./img/red.jpeg" class="card-img-top ethermine-img" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Ethermine Pool Stats</h5>
+        <p class="card-text">Mining ETH</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item ethereumPrice"></li>
+        <li class="list-group-item ethermineActiveWorkers"></li>
+        <li class="list-group-item ethermineCurrentHashRate"></li>
+        <li class="list-group-item ethermineReportedHashrate"></li>
+        <li class="list-group-item ethermineValidShares"></li>
+        <li class="list-group-item ethermineStaleshares"></li>
+        <li class="list-group-item ethermineInvalidShares"></li>
+        <li class="list-group-item ethermineCoinsPerDay"></li>
       </ul>
+      <div class="card-body">
+        <a target="_blank" href="https://ethermine.org/miners/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard"
+          class="card-link">Ethermine ETH</a>
+      </div>
+    </div>
+    <div class="card col-sm-3">
+      <img src="./img/red.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+      </div>
+    </div>
+    <div class="card col-sm-3">
+      <img src="./img/red.jpeg" class="card-img-top cortex-img" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">2miners Pool Stats</h5>
+        <p class="card-text">Mining Cortex</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item cortexPrice"></li>
+        <li class="list-group-item cortexActiveWorkers"></li>
+        <li class="list-group-item cortexCurrentHashRate"></li>
+        <li class="list-group-item cortexReportedHashrate"></li>
+        <li class="list-group-item cortexCoinsPerDay"></li>
+        <li class="list-group-item cortexTotalPaid"></li>
+        <li class="list-group-item cortexcurrentLuck"></li>
+        <li class="list-group-item cortexProfitPerDay"></li>
+      </ul>
+      <div class="card-body">
+        <a href="https://ctxc.2miners.com/account/0x277e50882683b8e94585f0116d6806176304af6b" class="card-link">2miners
+          Cortex</a>
+      </div>
     </div>
   </div>
-</nav>
 
-
-<div class="container ethermineContainer">
+  <!-- <div class="container ethermineContainer">
   <hr>
   <div class="row">
     <div class="col-sm">
@@ -78,88 +143,177 @@
       <p class="ethermineInvalidShares"></p>
     </div>
   </div>
-</div>
+</div> -->
 
-<script>
-  $( document ).ready(function() {
- 
-    $.get( "https://ctxc.2miners.com/api/accounts/0x277e50882683b8e94585f0116d6806176304af6b", function( data ) {
+  <script>
+    $(document).ready(function () {
 
-console.log(data)
+      // START OF ETHERMINE API
+      $.ajax({
+        type: "get", url: "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard",
+        success: function (data, text) {
+          var results = data
+          var dataLength = results.data.statistics.length - 1
+          var lastHR = results.data.statistics[dataLength]
+          var activeWorkers = results.data.statistics[dataLength].activeWorkers
+          var currentHashrate1 = results.data.statistics[dataLength].currentHashrate / 1000000
+          var currentHashrateToString = currentHashrate1.toString();
+          var currentHashrate = currentHashrateToString.substring(0, 6)
+          var invalidShares = results.data.statistics[dataLength].invalidShares
+          var reportedHashrate1 = results.data.statistics[dataLength].reportedHashrate / 1000000
+          var reportedHashrateToString = reportedHashrate1.toString();
+          var reportedHashrate = reportedHashrateToString.substring(0, 6);
+          var staleShares = results.data.statistics[dataLength].staleShares
+          var timeStamp = results.data.statistics[dataLength].time
+          var validShares = results.data.statistics[dataLength].validShares
 
-    });
+          if (reportedHashrate <= 300) {
+            $(".ethermine-img").attr("src", "./img/red.jpeg");
+          } else {
+            $(".ethermine-img").attr("src", "./img/green.jpeg");
+          }
 
-$.get( "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard", function( data, coinsperday ) {
+          $.ajax({
+            type: "get", url: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=437be1c9-3f16-4742-8587-4ac16ab274f4&id=1027",
+            success: function (data, text) {
+              var result = data.data[1027].quote.USD.price
+              var ethereumPrice1 = result
+              var ethereumPriceString = ethereumPrice1.toString();
+              var ethereumPrice = ethereumPriceString.substring(0, 7)
+              $('.ethereumPrice').html('ethereum Price <br>' + ethereumPrice + '$')
+            },
+            error: function (request, status, error) {
+              alert(request.responseText);
+            }
+          })
 
-  var results = data
-  var lastHR = results.data.statistics[99]
-  
-  var activeWorkers = results.data.statistics[99].activeWorkers
-  var currentHashrate1 = results.data.statistics[99].currentHashrate/1000000
-  var currentHashrateToString = currentHashrate1.toString();
-  var currentHashrate = currentHashrateToString.substring(0, 6)
-  var invalidShares = results.data.statistics[99].invalidShares
-  var reportedHashrate1 = results.data.statistics[99].reportedHashrate/1000000
-  var reportedHashrateToString = reportedHashrate1.toString();
-  var reportedHashrate = reportedHashrateToString.substring(0, 6);
-  var staleShares = results.data.statistics[99].staleShares
-  var timeStamp = results.data.statistics[99].time
-  var validShares = 304
+          function format_date(date, timeStamp) {
+            month = date.getMonth();
+            month = month + 1; //javascript date goes from 0 to 11
+            if (month < 10) month = "0" + month; //adding the prefix
+            year = date.getFullYear();
+            day = date.getDate();
+            // hour = date.getHours();
+            // minutes = date.getMinutes();
+            return day + "/" + month + "/" + year;
+          }
 
-  $.get( "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/currentStats", function( data ) {
-  var results2 = data
-  var coinsPerMinute = results2.data.usdPerMin*60
-  var coinsperday = coinsPerMinute*24
-  var coinsPerdayString = coinsperday.toString();
-  var coinsPerday = coinsPerdayString.substring(0, 5);
-  $('.ethermineCoinsPerDay').html('Revenue sur 24h <br>' + coinsPerday + "$")
-});
+          MyDate = new Date(timeStamp * 1000);
+          formatedDate = format_date(MyDate);
+          $('.ethermineDate').html('Date <br>' + formatedDate)
+          $('.ethermineActiveWorkers').html('Active Workers <br>' + activeWorkers)
+          $('.ethermineCurrentHashRate').html('Current HashRate <br>' + currentHashrate + 'MH/s')
+          $('.ethermineReportedHashrate').html('Reported HashRate <br>' + reportedHashrate + 'MH/s')
+          $('.ethermineValidShares').html('Valid shares <br>' + validShares)
+          $('.ethermineStaleshares').html('Stale Shares <br>' + staleShares)
+          $('.ethermineInvalidShares').html('Invalid Shares <br>' + invalidShares)
+          $('.ethermineContainer').show() //IF ALL SUCCESS => SHOW
+        },
+        error: function (request, status, error) {
+          $('.ethermineContainer').hide() //IF ALL FAILED => HIDE
+        }
+      });
 
-function format_date(date, timeStamp) {
-  month=date.getMonth();
-  month=month+1; //javascript date goes from 0 to 11
-  if (month<10) month="0"+month; //adding the prefix
-  year=date.getFullYear();
-  day=date.getDate();
-  hour=date.getHours();
-  minutes=date.getMinutes();
-  return day+"/"+month+"/"+year+" "+hour+":"+minutes;
-}
+      $.ajax({
+        type: "get", url: "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/currentStats",
+        success: function (data, text) {
+          var results2 = data
+          var coinsPerMinute = results2.data.usdPerMin * 60
+          var coinsperday = coinsPerMinute * 24
+          var coinsPerdayString = coinsperday.toString();
+          var coinsPerday = coinsPerdayString.substring(0, 5);
+          $('.ethermineCoinsPerDay').html('Profit Per 24h <br>' + coinsPerday + "$")
 
-MyDate = new Date(timeStamp*1000);
-formatedDate=format_date(MyDate);
-  console.log(lastHR)
-  $('.ethermineDate').html('Date <br>' + formatedDate)
-  $('.ethermineActiveWorkers').html('Active Workers <br>' + activeWorkers)
-  $('.ethermineCurrentHashRate').html('Current HashRate <br>' + currentHashrate + 'MH/s')
-  $('.ethermineReportedHashrate').html('Reported HashRate <br>' + reportedHashrate + 'MH/s')
-  $('.ethermineValidShares').html('Valid shares <br>' + validShares)
-  $('.ethermineStaleshares').html('Stale Shares <br>' + staleShares)
-  $('.ethermineInvalidShares').html('Invalid Shares <br>' + invalidShares)
-});
-$('.ethermineContainer').show()
+        },
+        error: function (request, status, error) {
+          alert(request.responseText);
+        }
+      });
+      // END OF ETHERMINE API
+
+      // START OF CORTEX API
+      $.ajax({
+        type: "get", url: "https://ctxc.2miners.com/api/accounts/0x277e50882683b8e94585f0116d6806176304af6b",
+        success: function (data, text) {
+          var cortexResult = data
+          console.log(cortexResult)
+          var activeWorkers = cortexResult.workersOnline
+          var currentHashrate1 = cortexResult.currentHashrate
+          var currentHashrateToString = currentHashrate1.toString();
+          var currentHashrate = currentHashrateToString.substring(0, 5);
+          var averageHashrate24 = cortexResult.hashrate
+          var timeStamp = cortexResult.updatedAt
+          var cortexPer24 = cortexResult.sumrewards[2].reward
+          var cortextoString = cortexPer24.toString();
+          var cortexPerDayString = cortextoString.substring(0, 4);
+          var total1 = cortexResult.stats.paid
+          var totalToString = total1.toString();
+          var totalPaid1 = totalToString
+          var a = cortexPerDayString;
+          var b = ".";
+          var position = 2;
+          var cortexPerDay = [a.slice(0, position), b, a.slice(position)].join('');
+          var c = totalPaid1;
+          var d = ".";
+          var position = 3;
+          var totalPaid = [c.slice(0, position), d, c.slice(position)].join('');
+          var currentLuck = cortexResult.currentLuck
+
+          if (currentHashrate <= 15) {
+            $(".cortex-img").attr("src", "./img/red.jpeg");
+          } else {
+            $(".cortex-img").attr("src", "./img/green.jpeg");
+          }
+
+          function format_date(date, timeStamp) {
+            month = date.getMonth();
+            month = month + 1; //javascript date goes from 0 to 11
+            if (month < 10) month = "0" + month; //adding the prefix
+            year = date.getFullYear();
+            day = date.getDate();
+            // hour = date.getHours();
+            // minutes = date.getMinutes();
+            return day + "/" + month + "/" + year;
+          }
+          MyDate = new Date;
+          formatedDate = format_date(MyDate);
+
+          $('.cortexDate').html('Date <br>' + formatedDate)
+          $('.cortexActiveWorkers').html('Active Workers <br>' + activeWorkers)
+          $('.cortexCurrentHashRate').html('Current HashRate <br>' + currentHashrate + 'G/s')
+          $('.cortexReportedHashrate').html('Reported HashRate <br>' + averageHashrate24 + 'G/s')
+          $('.cortexCoinsPerDay').html('Cortex/24h <br>' + cortexPerDay)
+          $('.cortexTotalPaid').html('Total Paid <br>' + totalPaid)
+          $('.cortexcurrentLuck').html('Current Luck' + currentLuck)
+
+          $.ajax({
+            type: "get", url: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=437be1c9-3f16-4742-8587-4ac16ab274f4&id=2638",
+            success: function (data, text) {
+              var result = data.data[2638].quote.USD.price
+              var cortexPrice1 = result
+              var cortexPriceString = cortexPrice1.toString();
+              var cortexPrice = cortexPriceString.substring(0, 4)
+              var cortexProfitPerDay1 = cortexPerDay * cortexPrice
+              var cortexProfitPerDayString = cortexProfitPerDay1.toString();
+              var cortexProfitPerDay = cortexProfitPerDayString.substring(0, 5)
+              $('.cortexPrice').html('Cortex Price <br>' + cortexPrice + '$')
+              $('.cortexProfitPerDay').html('Profit per 24h <br>' + cortexProfitPerDay + '$')
+            },
+            error: function (request, status, error) {
+              alert(request.responseText);
+            }
+          })
+        },
+        error: function (request, status, error) {
+
+        }
+      });
+      // END OF CORTEX API
 
 
-
-
-
-
-
-});
-
-
-
-
-</script>
-
-    
+    }); // End of Document Ready
+  </script>
 </body>
-
-
 <script src="js/aure.js"></script>
-<script src="js/news.js"></script>
-<script src="https://spreadsheets.google.com/feeds/cells/1Amz1eO8mWDb0XE6_cRuB6yKReAE6nrcrPDOSDfygeZg/1/public/values?alt=json-in-script&callback=doData"></script>
 
 </html>
-
-<!-- Follow me on Github : https://github.com/YannTarot -->
