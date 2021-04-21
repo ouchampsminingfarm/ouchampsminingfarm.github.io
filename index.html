@@ -46,9 +46,10 @@
     </div>
   </nav>
 
-
+<div class="container">
   <div class="row">
-    <div class="card col-sm-3">
+    <div class="card-deck">
+    <div class="card col-sm ethermine-container">
       <img src="./img/red.jpeg" class="card-img-top ethermine-img" alt="...">
       <div class="card-body">
         <h5 class="card-title">Ethermine Pool Stats</h5>
@@ -69,7 +70,7 @@
           class="card-link">Ethermine ETH</a>
       </div>
     </div>
-    <div class="card col-sm-3">
+    <div class="card col-sm">
       <img src="./img/red.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
@@ -85,7 +86,7 @@
         <a href="#" class="card-link">Card link</a>
       </div>
     </div>
-    <div class="card col-sm-3">
+    <div class="card col-sm">
       <img src="./img/red.jpeg" class="card-img-top cortex-img" alt="...">
       <div class="card-body">
         <h5 class="card-title">2miners Pool Stats</h5>
@@ -107,7 +108,8 @@
       </div>
     </div>
   </div>
-
+  </div>
+</div>
   <!-- <div class="container ethermineContainer">
   <hr>
   <div class="row">
@@ -153,6 +155,7 @@
         type: "get", url: "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard",
         success: function (data, text) {
           var results = data
+          console.log(results)
           var dataLength = results.data.statistics.length - 1
           var lastHR = results.data.statistics[dataLength]
           var activeWorkers = results.data.statistics[dataLength].activeWorkers
@@ -173,17 +176,20 @@
             $(".ethermine-img").attr("src", "./img/green.jpeg");
           }
 
+          if (reportedHashrate == 0) {
+            activeWorkers = 0
+          } else {
+            activeWorkers = activeWorkers
+          }
+          console.log(activeWorkers)
+          if (activeWorkers == 0){
+            $(".ethermine-container").hide();
+          }
           $.ajax({
-            type: "get", url: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=437be1c9-3f16-4742-8587-4ac16ab274f4&id=1027",
-            headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://ouchampsminingfarm.github.io/'
-    },
+            type: "get", url: "https://api.coingecko.com/api/v3/coins/ethereum",
             success: function (data, text) {
-              var result = data.data[1027].quote.USD.price
-              var ethereumPrice1 = result
-              var ethereumPriceString = ethereumPrice1.toString();
-              var ethereumPrice = ethereumPriceString.substring(0, 7)
+              var results = data
+              var ethereumPrice = results.market_data.current_price.usd
               $('.ethereumPrice').html('ethereum Price <br>' + ethereumPrice + '$')
             },
             error: function (request, status, error) {
@@ -291,16 +297,13 @@
           $('.cortexcurrentLuck').html('Current Luck <br>' + currentLuck)
 
           $.ajax({
-            type: "get", url: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?CMC_PRO_API_KEY=437be1c9-3f16-4742-8587-4ac16ab274f4&id=2638",
-            headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'https://ouchampsminingfarm.github.io/'
-    },
+            type: "get", url: "https://api.coingecko.com/api/v3/coins/cortex",
             success: function (data, text) {
-              var result = data.data[2638].quote.USD.price
-              var cortexPrice1 = result
-              var cortexPriceString = cortexPrice1.toString();
-              var cortexPrice = cortexPriceString.substring(0, 4)
+              
+              var results = data
+              console.log(results.market_data.current_price.eur)
+              var result = results.market_data.current_price.usd
+              var cortexPrice = result
               var cortexProfitPerDay1 = cortexPerDay * cortexPrice
               var cortexProfitPerDayString = cortexProfitPerDay1.toString();
               var cortexProfitPerDay = cortexProfitPerDayString.substring(0, 5)
@@ -318,6 +321,39 @@
       });
       // END OF CORTEX API
 
+      //START OF HIVEON API
+      $.ajax({
+            type: "get", url: "https://hiveon.net/api/v1/stats/miner/982a366cb0bfe6ea5c04a4017c839ef83b02978c/ETH/workers",
+            success: function (data, text) {
+              
+              var results = data.workers
+              var firstrig = '1_Rig_-_3060ti'
+              var secondrig = '2_Rig_-_3070'
+              var thirdrig = '3_Rig_-_Betty'
+              console.log(results[firstrig])
+              console.log(results[secondrig])
+              console.log(results[thirdrig])
+              var firsthashrate = results[firstrig].reportedHashrate
+              
+              let secondhashrate = results[secondrig].reportedHashrate
+              let thirdhashrate = results[thirdrig].reportedHashrate
+              var totalhashrate1 = Number(firsthashrate)+Number(secondhashrate)+Number(thirdhashrate)
+              var totalhashratetostring = totalhashrate1/1000000
+              var totalhashrate = totalhashratetostring.toString().substring(0, 6)
+              console.log(totalhashrate)
+              var megahash = 'MH/s'
+              var gigahash = 'GH/s'
+              if (totalhashrate >= 1000) {
+                console.log (gigahash)
+              } else {
+                console.log(megahash)
+              }
+            },
+            error: function (request, status, error) {
+              // alert(request.responseText);
+            }
+          })
+        
 
     }); // End of Document Ready
   </script>

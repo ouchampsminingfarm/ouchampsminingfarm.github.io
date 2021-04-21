@@ -1073,8 +1073,8 @@ hr {
 }
 .card {
   margin:auto;
-  min-width: 400px;
-  padding: 10px;
+  /* min-width: 400px; */
+  padding: 30px !important;
   background-color: #262327 !important;
   border: 1px solid #fff !important;
   color: #fff !important;
@@ -1088,4 +1088,12 @@ hr {
   background-color: #262327 !important;
   color : #fff !important;
   border: 1px solid rgba(255, 255, 255, 0.125) !important;
+}
+@media (min-width:34em) {
+  .card-deck > .card
+  {
+      width: 29%;
+      flex-wrap: wrap;
+      flex: initial; 
+  }
 }
