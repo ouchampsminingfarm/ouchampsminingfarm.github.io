@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
   integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA=="
   crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
 <body>
 
@@ -86,7 +87,8 @@
             <li class="list-group-item hiveonInvalidShares"></li>
           </ul>
           <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
+            <a target="_blank" href="https://hiveon.net/eth?miner=0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C"
+              class="card-link">Hiveon ETH</a>
           </div>
         </div>
         <div class="card col-sm">
@@ -106,14 +108,19 @@
             <li class="list-group-item cortexProfitPerDay"></li>
           </ul>
           <div class="card-body">
-            <a href="https://ctxc.2miners.com/account/0x277e50882683b8e94585f0116d6806176304af6b"
-              class="card-link">2miners
-              Cortex</a>
+            <a target="_blank" href="https://ctxc.2miners.com/account/0x277e50882683b8e94585f0116d6806176304af6b"
+              class="card-link">2minersCortex</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="container">
+    <canvas id="pie-chart" width="800" height="450"></canvas>
+
+  </div>
+
   <!-- <div class="container ethermineContainer">
   <hr>
   <div class="row">
@@ -153,9 +160,19 @@
 
   <script>
     $(document).ready(function () {
+      var hiveonActiveWorkersOnline = '0'
+      var hiveonValidShares = '0'
+      var hiveonInvalidShares = '0'
+      var hiveonStaleShares = '0'
+      var hiveonReportedHashrate = '0'
+      var hiveonCurrentHashRate = '0'
+      var hiveonProfit = '0'
+      var coinsPerday = ''
+      var cortexProfitPerDay = ''
 
+      var ethermineHeight = '1100';
+      $('.card').css('height', ethermineHeight)
       var date = ''
-
       var d = new Date();
       var curr_date = d.getDate();
       var curr_month = d.getMonth();
@@ -165,6 +182,7 @@
 
 
       // START OF ETHERMINE API
+
       $.ajax({
         type: "get", url: "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard",
         success: function (data, text) {
@@ -231,7 +249,7 @@
           var coinsPerMinute = results2.data.usdPerMin * 60
           var coinsperday = coinsPerMinute * 24
           var coinsPerdayString = coinsperday.toString();
-          var coinsPerday = coinsPerdayString.substring(0, 5);
+          coinsPerday = coinsPerdayString.substring(0, 5);
           $('.ethermineCoinsPerDay').html('Profit Per 24h <br>' + coinsPerday + "$")
 
         },
@@ -241,7 +259,10 @@
       });
       // END OF ETHERMINE API
 
+
+
       // START OF CORTEX API
+
       $.ajax({
         type: "get", url: "https://ctxc.2miners.com/api/accounts/0x277e50882683b8e94585f0116d6806176304af6b",
         success: function (data, text) {
@@ -250,14 +271,14 @@
           var currentHashrate1 = cortexResult.currentHashrate
           var currentHashrateToString = currentHashrate1.toString();
           var currentHashrate = currentHashrateToString.substring(0, 5);
-          var averageHashrate24 = cortexResult.hashrate
+          var averageHashrate24 = cortexResult.hashrate.toString().substring(0, 5)
           var timeStamp = cortexResult.updatedAt
           var cortexPer24 = cortexResult.sumrewards[2].reward
           var cortextoString = cortexPer24.toString();
           var cortexPerDayString = cortextoString.substring(0, 4);
           var total1 = cortexResult.stats.paid
           var totalToString = total1.toString();
-          var totalPaid1 = totalToString
+          var totalPaid1 = totalToString.substring(0, 6)
           var a = cortexPerDayString;
           var b = ".";
           var position = 2;
@@ -274,11 +295,17 @@
             $(".cortex-img").attr("src", "./img/green.jpeg");
           }
 
+          var power = ''
+          if (currentHashrate >= 1000) {
+            power = 'GH/S'
+          } else {
+            power = 'MH/s'
+          }
 
           $('.cortexDate').html('Date <br>' + date)
           $('.cortexActiveWorkers').html('Active Workers <br>' + activeWorkers)
-          $('.cortexCurrentHashRate').html('Current HashRate <br>' + currentHashrate + 'G/s')
-          $('.cortexReportedHashrate').html('Reported HashRate <br>' + averageHashrate24 + 'G/s')
+          $('.cortexCurrentHashRate').html('Current HashRate <br>' + currentHashrate + ' ' + power)
+          $('.cortexReportedHashrate').html('Reported HashRate <br>' + averageHashrate24 + ' ' + power)
           $('.cortexCoinsPerDay').html('Cortex/24h <br>' + cortexPerDay)
           $('.cortexTotalPaid').html('Total Paid <br>' + totalPaid)
           $('.cortexcurrentLuck').html('Current Luck <br>' + currentLuck)
@@ -289,10 +316,12 @@
 
               var results = data
               var result = results.market_data.current_price.usd
-              var cortexPrice = result
+              var cortexPrice1 = result
+              var cortexPriceToString = cortexPrice1.toString().substring(0, 4)
+              var cortexPrice = cortexPriceToString
               var cortexProfitPerDay1 = cortexPerDay * cortexPrice
               var cortexProfitPerDayString = cortexProfitPerDay1.toString();
-              var cortexProfitPerDay = cortexProfitPerDayString.substring(0, 5)
+              cortexProfitPerDay = cortexProfitPerDayString.substring(0, 5)
               $('.cortexPrice').html('Cortex Price <br>' + cortexPrice + '$')
               $('.cortexProfitPerDay').html('Profit per 24h <br>' + cortexProfitPerDay + '$')
             },
@@ -310,13 +339,7 @@
       //START OF HIVEON API
 
 
-      var hiveonActiveWorkersOnline = ''
-      var hiveonValidShares = ''
-      var hiveInvalidShares = ''
-      var hiveonStaleShares = ''
-      var hiveonReportedHashrate = ''
-      var hiveonCurrentHashRate = ''
-      var hiveonProfit = ''
+
 
       $.ajax({
         type: "get", url: "https://hiveon.net/api/v1/stats/miner/982a366cb0bfe6ea5c04a4017c839ef83b02978c/ETH/billing-acc",
@@ -328,22 +351,21 @@
               var ethereumPrice = results.market_data.current_price.usd
               $('.ethereumPrice').html('ethereum Price <br>' + ethereumPrice + '$')
               var results = data
-          hiveonProfitEther = results.expectedReward24H
-          hiveonProfit = hiveonProfitEther*ethereumPrice
-          console.log(hiveonProfit)
+              hiveonProfitEther = results.expectedReward24H
+              hiveonProfit = hiveonProfitEther * ethereumPrice
             },
             error: function (request, status, error) {
               // alert(request.responseText);
             }
           })
-          
+
         },
 
-error: function (request, status, error) {
-  // alert(request.responseText);
-}
-})
-      
+        error: function (request, status, error) {
+          // alert(request.responseText);
+        }
+      })
+
       $.ajax({
         type: "get", url: "https://hiveon.net/api/v1/stats/miner/982a366cb0bfe6ea5c04a4017c839ef83b02978c/ETH",
         success: function (data, text) {
@@ -355,7 +377,7 @@ error: function (request, status, error) {
           hiveonStaleShares = data.sharesStatusStats.staleCount
           hiveonCurrentHashRate = data.hashrate
           hiveonReportedHashrate = data.reportedHashrate
-         
+
           var totalReportedhashratetostring = hiveonReportedHashrate / 1000000
           var totalReportedhashrate = totalReportedhashratetostring.toString().substring(0, 6)
           hiveonReportedHashrate = totalReportedhashrate
@@ -363,8 +385,6 @@ error: function (request, status, error) {
           var totalCurrenthashratetostring = hiveonCurrentHashRate / 1000000
           var totalCurrenthashrate = totalCurrenthashratetostring.toString().substring(0, 6)
           hiveonCurrentHashRate = totalCurrenthashrate
-          console.log(hiveonCurrentHashRate)
-          console.log(hiveonReportedHashrate)
         },
 
         error: function (request, status, error) {
@@ -375,14 +395,13 @@ error: function (request, status, error) {
       $.ajax({
         type: "get", url: "https://hiveon.net/api/v1/stats/miner/982a366cb0bfe6ea5c04a4017c839ef83b02978c/ETH/workers",
         success: function (data, text) {
-          console.log(data)
           var results = data.workers
           var firstrig = '1_Rig_-_3060ti'
           var secondrig = '2_Rig_-_3070'
           var thirdrig = '3_Rig_-_Betty'
-          console.log(results[firstrig])
-          console.log(results[secondrig])
-          console.log(results[thirdrig])
+          // console.log(results[firstrig])
+          // console.log(results[secondrig])
+          // console.log(results[thirdrig])
           var firsthashrate = results[firstrig].reportedHashrate
           let secondhashrate = results[secondrig].reportedHashrate
           let thirdhashrate = results[thirdrig].reportedHashrate
@@ -397,15 +416,41 @@ error: function (request, status, error) {
           $('.hiveonDate').html('Date <br>' + date)
           $('.hiveonActiveWorkersOnline').html('Active Workers <br>' + hiveonActiveWorkersOnline)
           $('.hiveonCurrentHashRate').html('Current HashRate <br>' + hiveonCurrentHashRate + ' ' + power)
-           $('.hiveonReportedHashrate').html('Reported HashRate <br>' + hiveonReportedHashrate + ' ' + power)
-            $('.hiveonStaleshares').html('Stale Shares <br>' + hiveonStaleShares)
-           $('.hiveonInvalidShares').html('Invalid Shares <br>' + hiveonInvalidShares)
-           $('.hiveonValidShares').html('Valid Shares <br>' + hiveonValidShares)
+          $('.hiveonReportedHashrate').html('Reported HashRate <br>' + hiveonReportedHashrate + ' ' + power)
+          $('.hiveonStaleshares').html('Stale Shares <br>' + hiveonStaleShares)
+          $('.hiveonInvalidShares').html('Invalid Shares <br>' + hiveonInvalidShares)
+          $('.hiveonValidShares').html('Valid Shares <br>' + hiveonValidShares)
+          $('.hiveonProfit').html('Valid Shares <br>' + hiveonProfit)
           // $('.hiveonContainer').show() //IF ALL SUCCESS => SHOW
+
+          setTimeout(
+            function () {
+
+              new Chart(document.getElementById("pie-chart"), {
+                type: 'pie',
+                data: {
+                  labels: ["Ethermine", "Hiveon", "2miners Cortex"],
+                  datasets: [{
+                    label: "Percent",
+                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+                    data: [coinsPerday, hiveonProfit, cortexProfitPerDay]
+                  }]
+                },
+                options: {
+                  title: {
+                    display: true,
+                    text: 'Revenue par pool/coin'
+                  }
+                }
+              });
+            }, 5000);
+
         },
         error: function (request, status, error) {
-        //  $('.ethermineContainer').hide() //IF ALL FAILED => HIDE
+          //  $('.ethermineContainer').hide() //IF ALL FAILED => HIDE
         },
+
+
 
         error: function (request, status, error) {
           // alert(request.responseText);
