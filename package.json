@@ -27,6 +27,7 @@
     "gulp": "^3.9.1",
     "gulp-assets": "^0.2.2",
     "gulp-load-plugins": "^2.0.6",
+    "http-server": "^0.12.3",
     "progress": "^2.0.3",
     "run-script": "^0.1.1",
     "run-sequence": "^2.2.1",
