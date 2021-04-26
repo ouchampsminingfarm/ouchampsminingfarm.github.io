@@ -48,7 +48,7 @@
     </div>
   </nav>
 
-  <!-- <div class="container">
+  <div class="container">
     <div class="row">
       <div class="card-deck">
         <div class="card col-sm ethermine-container">
@@ -116,7 +116,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <p class="alert alert-secondary ">Card preview is best suited for devices where you can control the width of your browser.</p>
+  <!-- <p class="alert alert-secondary ">Card preview is best suited for devices where you can control the width of your browser.</p>
   <article class="card card-xh mb-3">
       <div class="card-outer-soon soon-left">
           <span class="card-soon">Coming Soon</span>
@@ -182,642 +182,688 @@
                     </tr>
                   </tbody>
                 </table>
-        <!-- </p> -->
-      </div>
+       
+       </div> 
       <footer class="card-footer text-muted">
           By <a href="https://ivanvinski.com" target="_blank">Ivan Vinski</a>
       </footer>
     </article>
-    
-
-
-<style>
-.table {
-    width: 100%;
-    margin-bottom: 1rem;
-    color: #fff !important;
-}
-.card {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	min-width: 0;
-	word-wrap: break-word;
-	background-color: #fff;
-	background-clip: border-box;
-	border: 1px solid rgba(0, 0, 0, .125);
-	border-radius: .25rem
-}
-
-.card>hr {
-	margin-right: 0;
-	margin-left: 0
-}
-
-.card>.list-group:first-child .list-group-item:first-child {
-	border-top-left-radius: .25rem;
-	border-top-right-radius: .25rem
-}
-
-.card>.list-group:last-child .list-group-item:last-child {
-	border-bottom-right-radius: .25rem;
-	border-bottom-left-radius: .25rem
-}
-
-.card-body {
-	flex: 1 1 auto;
-	padding: 1.25rem
-}
-
-.card-title {
-	margin-bottom: .75rem
-}
-
-.card-subtitle {
-	margin-top: -.375rem;
-	margin-bottom: 0
-}
-
-.card-text:last-child {
-	margin-bottom: 0
-}
-
-.card-link:hover {
-	text-decoration: none
-}
-
-.card-link+.card-link {
-	margin-left: 1.25rem
-}
-
-.card-header {
-	padding: .75rem 1.25rem;
-	margin-bottom: 0;
-	background-color: rgba(0, 0, 0, .03);
-	border-bottom: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card-header:first-child {
-	border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
-}
-
-.card-header+.list-group .list-group-item:first-child {
-	border-top: 0
-}
-
-.card-footer {
-	padding: .75rem 1.25rem;
-	background-color: rgba(0, 0, 0, .03);
-	border-top: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card-footer:last-child {
-	border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px)
-}
-
-.card-header-tabs {
-	margin-right: -.625rem;
-	margin-bottom: -.75rem;
-	margin-left: -.625rem;
-	border-bottom: 0
-}
-
-.card-header-pills {
-	margin-right: -.625rem;
-	margin-left: -.625rem
-}
-
-.card-img-overlay {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding: 1.25rem
-}
-
-.card-img {
-	width: 100%;
-	border-radius: calc(.25rem - 1px)
-}
-
-.card-img-top {
-	width: 100%;
-	border-top-left-radius: calc(.25rem - 1px);
-	border-top-right-radius: calc(.25rem - 1px)
-}
-
-.card-img-bottom {
-	width: 100%;
-	border-bottom-right-radius: calc(.25rem - 1px);
-	border-bottom-left-radius: calc(.25rem - 1px)
-}
-
-.card-deck {
-	display: flex;
-	flex-direction: column
-}
-
-.card-deck .card {
-	margin-bottom: 15px
-}
-
-@media (min-width:576px) {
-	.card-deck {
-		flex-flow: row wrap;
-		margin-right: -15px;
-		margin-left: -15px
-	}
-	.card-deck .card {
-		display: flex;
-		flex: 1 0 0%;
-		flex-direction: column;
-		margin-right: 15px;
-		margin-bottom: 0;
-		margin-left: 15px
-	}
-}
-
-.card-group {
-	display: flex;
-	flex-direction: column
-}
-
-.card-group>.card {
-	margin-bottom: 15px
-}
-
-@media (min-width:576px) {
-	.card-group {
-		flex-flow: row wrap
-	}
-	.card-group>.card {
-		flex: 1 0 0%;
-		margin-bottom: 0
-	}
-	.card-group>.card+.card {
-		margin-left: 0;
-		border-left: 0
-	}
-	.card-group>.card:not(:last-child) {
-		border-top-right-radius: 0;
-		border-bottom-right-radius: 0
-	}
-	.card-group>.card:not(:last-child) .card-header,
-	.card-group>.card:not(:last-child) .card-img-top {
-		border-top-right-radius: 0
-	}
-	.card-group>.card:not(:last-child) .card-footer,
-	.card-group>.card:not(:last-child) .card-img-bottom {
-		border-bottom-right-radius: 0
-	}
-	.card-group>.card:not(:first-child) {
-		border-top-left-radius: 0;
-		border-bottom-left-radius: 0
-	}
-	.card-group>.card:not(:first-child) .card-header,
-	.card-group>.card:not(:first-child) .card-img-top {
-		border-top-left-radius: 0
-	}
-	.card-group>.card:not(:first-child) .card-footer,
-	.card-group>.card:not(:first-child) .card-img-bottom {
-		border-bottom-left-radius: 0
-	}
-}
-
-.card-columns .card {
-	margin-bottom: .75rem
-}
-
-@media (min-width:576px) {
-	.card-columns {
-		-moz-column-count: 3;
-		column-count: 3;
-		-moz-column-gap: 1.25rem;
-		column-gap: 1.25rem;
-		orphans: 1;
-		widows: 1
-	}
-	.card-columns .card {
-		display: inline-block;
-		width: 100%
-	}
-}
-
-.accordion>.card {
-	overflow: hidden
-}
-
-.accordion>.card:not(:first-of-type) .card-header:first-child {
-	border-radius: 0
-}
-
-.accordion>.card:not(:first-of-type):not(:last-of-type) {
-	border-bottom: 0;
-	border-radius: 0
-}
-
-.accordion>.card:first-of-type {
-	border-bottom: 0;
-	border-bottom-right-radius: 0;
-	border-bottom-left-radius: 0
-}
-
-.accordion>.card:last-of-type {
-	border-top-left-radius: 0;
-	border-top-right-radius: 0
-}
-
-.accordion>.card .card-header {
-	margin-bottom: -1px
-}
-
-.card {
-	flex-direction: row;
-	flex-wrap: wrap;
-	overflow: hidden
-}
-
-.card-body,
-.card-footer,
-.card-header,
-.card-img-bottom,
-.card-img-top {
-	flex: 1 1 100%
-}
-
-.card-footer,
-.card-header,
-.card-img-bottom,
-.card-img-top {
-	border: none;
-	border-radius: 0;
-	-o-object-fit: cover;
-	object-fit: cover
-}
-
-.card-x .card-body,
-.card-xf .card-body,
-.card-xh .card-body {
-	flex-basis: 50%;
-	width: 50%
-}
-
-.card-x .card-footer,
-.card-x .card-header,
-.card-x .card-img-bottom,
-.card-x .card-img-top {
-	flex-basis: 25%;
-	width: 25%
-}
-
-.card-xh .card-header,
-.card-xh .card-img-top {
-	flex-basis: 25%;
-	width: 25%
-}
-
-.card-xf .card-footer,
-.card-xf .card-img-bottom {
-	flex-basis: 25%;
-	width: 25%
-}
-
-.card .card-header {
-	border-bottom: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card .card-footer {
-	border-top: 1px solid rgba(0, 0, 0, .125)
-}
-
-[class*=" card-x-"] .card-footer,
-[class*=" card-x-"] .card-header {
-	border: none
-}
-
-[class*=" card-xf-"] .card-footer,
-[class*=" card-xh-"] .card-header {
-	border: none
-}
-
-.card-x .card-header,
-.card-xh .card-header,
-[class*=" card-x-"] .card-header,
-[class*=" card-xh-"] .card-header {
-	border-right: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card-x .card-footer,
-.card-xf .card-footer,
-[class*=" card-x-"] .card-footer,
-[class*=" card-xf-"] .card-footer {
-	border-left: 1px solid rgba(0, 0, 0, .125)
-}
-
-@media (min-width:576px) {
-	.card-x-sm .card-body,
-	.card-xf-sm .card-body,
-	.card-xh-sm .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-sm .card-footer,
-	.card-x-sm .card-header,
-	.card-x-sm .card-img-bottom,
-	.card-x-sm .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xh-sm .card-header,
-	.card-xh-sm .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xf-sm .card-footer,
-	.card-xf-sm .card-img-bottom {
-		flex-basis: 25%;
-		width: 25%
-	}
-}
-
-@media (min-width:768px) {
-	.card-x-md .card-body,
-	.card-xf-md .card-body,
-	.card-xh-md .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-md .card-footer,
-	.card-x-md .card-header,
-	.card-x-md .card-img-bottom,
-	.card-x-md .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xh-md .card-header,
-	.card-xh-md .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xf-md .card-footer,
-	.card-xf-md .card-img-bottom {
-		flex-basis: 25%;
-		width: 25%
-	}
-}
-
-@media (min-width:992px) {
-	.card-x-lg .card-body,
-	.card-xf-lg .card-body,
-	.card-xh-lg .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-lg .card-footer,
-	.card-x-lg .card-header,
-	.card-x-lg .card-img-bottom,
-	.card-x-lg .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xh-lg .card-header,
-	.card-xh-lg .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xf-lg .card-footer,
-	.card-xf-lg .card-img-bottom {
-		flex-basis: 25%;
-		width: 25%
-	}
-}
-
-@media (min-width:1200px) {
-	.card-x-xl .card-body,
-	.card-xf-xl .card-body,
-	.card-xh-xl .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-xl .card-footer,
-	.card-x-xl .card-header,
-	.card-x-xl .card-img-bottom,
-	.card-x-xl .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xh-xl .card-header,
-	.card-xh-xl .card-img-top {
-		flex-basis: 25%;
-		width: 25%
-	}
-	.card-xf-xl .card-footer,
-	.card-xf-xl .card-img-bottom {
-		flex-basis: 25%;
-		width: 25%
-	}
-}
-
-.card .card-header {
-	border-bottom: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card .card-footer {
-	border-top: 1px solid rgba(0, 0, 0, .125)
-}
-
-[class*=" card-x-"] .card-footer,
-[class*=" card-x-"] .card-header {
-	border: none
-}
-
-[class*=" card-xf-"] .card-footer,
-[class*=" card-xh-"] .card-header {
-	border: none
-}
-
-.card-x .card-header,
-.card-xh .card-header,
-[class*=" card-x-"] .card-header,
-[class*=" card-xh-"] .card-header {
-	border-right: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card-x .card-footer,
-.card-xf .card-footer,
-[class*=" card-x-"] .card-footer,
-[class*=" card-xf-"] .card-footer {
-	border-left: 1px solid rgba(0, 0, 0, .125)
-}
-
-.card {
-	flex-direction: row;
-	flex-wrap: wrap;
-	overflow: hidden
-}
-
-.card-body,
-.card-footer,
-.card-header,
-.card-img-bottom,
-.card-img-top {
-	flex: 1 1 100%
-}
-
-.card-footer,
-.card-header,
-.card-img-bottom,
-.card-img-top {
-	border: none;
-	border-radius: 0;
-	-o-object-fit: cover;
-	object-fit: cover
-}
-
-.card-x .card-body,
-.card-xf .card-body,
-.card-xh .card-body {
-	flex-basis: 50%;
-	width: 50%
-}
-
-.card-x .card-footer,
-.card-x .card-header,
-.card-x .card-img-bottom,
-.card-x .card-img-top {
-	flex-basis: 0%;
-	width: 25%
-}
-
-.card-xh .card-header,
-.card-xh .card-img-top {
-	flex-basis: 0%;
-}
-
-.card-xf .card-footer,
-.card-xf .card-img-bottom {
-			width: 0%
-}
-
-@media (min-width:576px) {
-	.card-x-sm .card-body,
-	.card-xf-sm .card-body,
-	.card-xh-sm .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-sm .card-footer,
-	.card-x-sm .card-header,
-	.card-x-sm .card-img-bottom,
-	.card-x-sm .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xh-sm .card-header,
-	.card-xh-sm .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xf-sm .card-footer,
-	.card-xf-sm .card-img-bottom {
-		flex-basis: 0%;
-		width: 0%
-	}
-}
-
-@media (min-width:768px) {
-	.card-x-md .card-body,
-	.card-xf-md .card-body,
-	.card-xh-md .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-md .card-footer,
-	.card-x-md .card-header,
-	.card-x-md .card-img-bottom,
-	.card-x-md .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xh-md .card-header,
-	.card-xh-md .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xf-md .card-footer,
-	.card-xf-md .card-img-bottom {
-		flex-basis: 0%;
-		width: 0%
-	}
-}
-
-@media (min-width:992px) {
-	.card-x-lg .card-body,
-	.card-xf-lg .card-body,
-	.card-xh-lg .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-lg .card-footer,
-	.card-x-lg .card-header,
-	.card-x-lg .card-img-bottom,
-	.card-x-lg .card-img-top {
-		flex-basis: 5%;
-		width: 25%
-	}
-	.card-xh-lg .card-header,
-	.card-xh-lg .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xf-lg .card-footer,
-	.card-xf-lg .card-img-bottom {
-		flex-basis: 0%;
-		width: 0%
-	}
-}
-
-@media (min-width:1200px) {
-	.card-x-xl .card-body,
-	.card-xf-xl .card-body,
-	.card-xh-xl .card-body {
-		flex-basis: 50%;
-		width: 50%
-	}
-	.card-x-xl .card-footer,
-	.card-x-xl .card-header,
-	.card-x-xl .card-img-bottom,
-	.card-x-xl .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xh-xl .card-header,
-	.card-xh-xl .card-img-top {
-		flex-basis: 0%;
-		width: 0%
-	}
-	.card-xf-xl .card-footer,
-	.card-xf-xl .card-img-bottom {
-		flex-basis: 0%;
-		width: 0%
-	}
-}
-
-    .card-outer-soon{
+     -->
+
+
+  <style>
+    /* .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #fff !important;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, .125);
+      border-radius: .25rem
+    }
+
+    .card>hr {
+      margin-right: 0;
+      margin-left: 0
+    }
+
+    .card>.list-group:first-child .list-group-item:first-child {
+      border-top-left-radius: .25rem;
+      border-top-right-radius: .25rem
+    }
+
+    .card>.list-group:last-child .list-group-item:last-child {
+      border-bottom-right-radius: .25rem;
+      border-bottom-left-radius: .25rem
+    }
+
+    .card-body {
+      flex: 1 1 auto;
+      padding: 1.25rem
+    }
+
+    .card-title {
+      margin-bottom: .75rem
+    }
+
+    .card-subtitle {
+      margin-top: -.375rem;
+      margin-bottom: 0
+    }
+
+    .card-text:last-child {
+      margin-bottom: 0
+    }
+
+    .card-link:hover {
+      text-decoration: none
+    }
+
+    .card-link+.card-link {
+      margin-left: 1.25rem
+    }
+
+    .card-header {
+      padding: .75rem 1.25rem;
+      margin-bottom: 0;
+      background-color: rgba(0, 0, 0, .03);
+      border-bottom: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card-header:first-child {
+      border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0
+    }
+
+    .card-header+.list-group .list-group-item:first-child {
+      border-top: 0
+    }
+
+    .card-footer {
+      padding: .75rem 1.25rem;
+      background-color: rgba(0, 0, 0, .03);
+      border-top: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card-footer:last-child {
+      border-radius: 0 0 calc(.25rem - 1px) calc(.25rem - 1px)
+    }
+
+    .card-header-tabs {
+      margin-right: -.625rem;
+      margin-bottom: -.75rem;
+      margin-left: -.625rem;
+      border-bottom: 0
+    }
+
+    .card-header-pills {
+      margin-right: -.625rem;
+      margin-left: -.625rem
+    }
+
+    .card-img-overlay {
       position: absolute;
-    width: 140px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1.25rem
+    }
+
+    .card-img {
+      width: 100%;
+      border-radius: calc(.25rem - 1px)
+    }
+
+    .card-img-top {
+      width: 100%;
+      border-top-left-radius: calc(.25rem - 1px);
+      border-top-right-radius: calc(.25rem - 1px)
+    }
+
+    .card-img-bottom {
+      width: 100%;
+      border-bottom-right-radius: calc(.25rem - 1px);
+      border-bottom-left-radius: calc(.25rem - 1px)
+    }
+
+    .card-deck {
+      display: flex;
+      flex-direction: column
+    }
+
+    .card-deck .card {
+      margin-bottom: 15px
+    }
+
+    @media (min-width:576px) {
+      .card-deck {
+        flex-flow: row wrap;
+        margin-right: -15px;
+        margin-left: -15px
+      }
+
+      .card-deck .card {
+        display: flex;
+        flex: 1 0 0%;
+        flex-direction: column;
+        margin-right: 15px;
+        margin-bottom: 0;
+        margin-left: 15px
+      }
+    }
+
+    .card-group {
+      display: flex;
+      flex-direction: column
+    }
+
+    .card-group>.card {
+      margin-bottom: 15px
+    }
+
+    @media (min-width:576px) {
+      .card-group {
+        flex-flow: row wrap
+      }
+
+      .card-group>.card {
+        flex: 1 0 0%;
+        margin-bottom: 0
+      }
+
+      .card-group>.card+.card {
+        margin-left: 0;
+        border-left: 0
+      }
+
+      .card-group>.card:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0
+      }
+
+      .card-group>.card:not(:last-child) .card-header,
+      .card-group>.card:not(:last-child) .card-img-top {
+        border-top-right-radius: 0
+      }
+
+      .card-group>.card:not(:last-child) .card-footer,
+      .card-group>.card:not(:last-child) .card-img-bottom {
+        border-bottom-right-radius: 0
+      }
+
+      .card-group>.card:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0
+      }
+
+      .card-group>.card:not(:first-child) .card-header,
+      .card-group>.card:not(:first-child) .card-img-top {
+        border-top-left-radius: 0
+      }
+
+      .card-group>.card:not(:first-child) .card-footer,
+      .card-group>.card:not(:first-child) .card-img-bottom {
+        border-bottom-left-radius: 0
+      }
+    }
+
+    .card-columns .card {
+      margin-bottom: .75rem
+    }
+
+    @media (min-width:576px) {
+      .card-columns {
+        -moz-column-count: 3;
+        column-count: 3;
+        -moz-column-gap: 1.25rem;
+        column-gap: 1.25rem;
+        orphans: 1;
+        widows: 1
+      }
+
+      .card-columns .card {
+        display: inline-block;
+        width: 100%
+      }
+    }
+
+    .accordion>.card {
+      overflow: hidden
+    }
+
+    .accordion>.card:not(:first-of-type) .card-header:first-child {
+      border-radius: 0
+    }
+
+    .accordion>.card:not(:first-of-type):not(:last-of-type) {
+      border-bottom: 0;
+      border-radius: 0
+    }
+
+    .accordion>.card:first-of-type {
+      border-bottom: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0
+    }
+
+    .accordion>.card:last-of-type {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0
+    }
+
+    .accordion>.card .card-header {
+      margin-bottom: -1px
+    }
+
+    .card {
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: hidden
+    }
+
+    .card-body,
+    .card-footer,
+    .card-header,
+    .card-img-bottom,
+    .card-img-top {
+      flex: 1 1 100%
+    }
+
+    .card-footer,
+    .card-header,
+    .card-img-bottom,
+    .card-img-top {
+      border: none;
+      border-radius: 0;
+      -o-object-fit: cover;
+      object-fit: cover
+    }
+
+    .card-x .card-body,
+    .card-xf .card-body,
+    .card-xh .card-body {
+      flex-basis: 50%;
+      width: 50%
+    }
+
+    .card-x .card-footer,
+    .card-x .card-header,
+    .card-x .card-img-bottom,
+    .card-x .card-img-top {
+      flex-basis: 25%;
+      width: 25%
+    }
+
+    .card-xh .card-header,
+    .card-xh .card-img-top {
+      flex-basis: 25%;
+      width: 25%
+    }
+
+    .card-xf .card-footer,
+    .card-xf .card-img-bottom {
+      flex-basis: 25%;
+      width: 25%
+    }
+
+    .card .card-header {
+      border-bottom: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card .card-footer {
+      border-top: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    [class*=" card-x-"] .card-footer,
+    [class*=" card-x-"] .card-header {
+      border: none
+    }
+
+    [class*=" card-xf-"] .card-footer,
+    [class*=" card-xh-"] .card-header {
+      border: none
+    }
+
+    .card-x .card-header,
+    .card-xh .card-header,
+    [class*=" card-x-"] .card-header,
+    [class*=" card-xh-"] .card-header {
+      border-right: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card-x .card-footer,
+    .card-xf .card-footer,
+    [class*=" card-x-"] .card-footer,
+    [class*=" card-xf-"] .card-footer {
+      border-left: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    @media (min-width:576px) {
+
+      .card-x-sm .card-body,
+      .card-xf-sm .card-body,
+      .card-xh-sm .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-sm .card-footer,
+      .card-x-sm .card-header,
+      .card-x-sm .card-img-bottom,
+      .card-x-sm .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xh-sm .card-header,
+      .card-xh-sm .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xf-sm .card-footer,
+      .card-xf-sm .card-img-bottom {
+        flex-basis: 25%;
+        width: 25%
+      }
+    }
+
+    @media (min-width:768px) {
+
+      .card-x-md .card-body,
+      .card-xf-md .card-body,
+      .card-xh-md .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-md .card-footer,
+      .card-x-md .card-header,
+      .card-x-md .card-img-bottom,
+      .card-x-md .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xh-md .card-header,
+      .card-xh-md .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xf-md .card-footer,
+      .card-xf-md .card-img-bottom {
+        flex-basis: 25%;
+        width: 25%
+      }
+    }
+
+    @media (min-width:992px) {
+
+      .card-x-lg .card-body,
+      .card-xf-lg .card-body,
+      .card-xh-lg .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-lg .card-footer,
+      .card-x-lg .card-header,
+      .card-x-lg .card-img-bottom,
+      .card-x-lg .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xh-lg .card-header,
+      .card-xh-lg .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xf-lg .card-footer,
+      .card-xf-lg .card-img-bottom {
+        flex-basis: 25%;
+        width: 25%
+      }
+    }
+
+    @media (min-width:1200px) {
+
+      .card-x-xl .card-body,
+      .card-xf-xl .card-body,
+      .card-xh-xl .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-xl .card-footer,
+      .card-x-xl .card-header,
+      .card-x-xl .card-img-bottom,
+      .card-x-xl .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xh-xl .card-header,
+      .card-xh-xl .card-img-top {
+        flex-basis: 25%;
+        width: 25%
+      }
+
+      .card-xf-xl .card-footer,
+      .card-xf-xl .card-img-bottom {
+        flex-basis: 25%;
+        width: 25%
+      }
+    }
+
+    .card .card-header {
+      border-bottom: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card .card-footer {
+      border-top: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    [class*=" card-x-"] .card-footer,
+    [class*=" card-x-"] .card-header {
+      border: none
+    }
+
+    [class*=" card-xf-"] .card-footer,
+    [class*=" card-xh-"] .card-header {
+      border: none
+    }
+
+    .card-x .card-header,
+    .card-xh .card-header,
+    [class*=" card-x-"] .card-header,
+    [class*=" card-xh-"] .card-header {
+      border-right: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card-x .card-footer,
+    .card-xf .card-footer,
+    [class*=" card-x-"] .card-footer,
+    [class*=" card-xf-"] .card-footer {
+      border-left: 1px solid rgba(0, 0, 0, .125)
+    }
+
+    .card {
+      flex-direction: row;
+      flex-wrap: wrap;
+      overflow: hidden
+    }
+
+    .card-body,
+    .card-footer,
+    .card-header,
+    .card-img-bottom,
+    .card-img-top {
+      flex: 1 1 100%
+    }
+
+    .card-footer,
+    .card-header,
+    .card-img-bottom,
+    .card-img-top {
+      border: none;
+      border-radius: 0;
+      -o-object-fit: cover;
+      object-fit: cover
+    }
+
+    .card-x .card-body,
+    .card-xf .card-body,
+    .card-xh .card-body {
+      flex-basis: 50%;
+      width: 50%
+    }
+
+    .card-x .card-footer,
+    .card-x .card-header,
+    .card-x .card-img-bottom,
+    .card-x .card-img-top {
+      flex-basis: 0%;
+      width: 25%
+    }
+
+    .card-xh .card-header,
+    .card-xh .card-img-top {
+      flex-basis: 0%;
+    }
+
+    .card-xf .card-footer,
+    .card-xf .card-img-bottom {
+      width: 0%
+    }
+
+    @media (min-width:576px) {
+
+      .card-x-sm .card-body,
+      .card-xf-sm .card-body,
+      .card-xh-sm .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-sm .card-footer,
+      .card-x-sm .card-header,
+      .card-x-sm .card-img-bottom,
+      .card-x-sm .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xh-sm .card-header,
+      .card-xh-sm .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xf-sm .card-footer,
+      .card-xf-sm .card-img-bottom {
+        flex-basis: 0%;
+        width: 0%
+      }
+    }
+
+    @media (min-width:768px) {
+
+      .card-x-md .card-body,
+      .card-xf-md .card-body,
+      .card-xh-md .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-md .card-footer,
+      .card-x-md .card-header,
+      .card-x-md .card-img-bottom,
+      .card-x-md .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xh-md .card-header,
+      .card-xh-md .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xf-md .card-footer,
+      .card-xf-md .card-img-bottom {
+        flex-basis: 0%;
+        width: 0%
+      }
+    }
+
+    @media (min-width:992px) {
+
+      .card-x-lg .card-body,
+      .card-xf-lg .card-body,
+      .card-xh-lg .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-lg .card-footer,
+      .card-x-lg .card-header,
+      .card-x-lg .card-img-bottom,
+      .card-x-lg .card-img-top {
+        flex-basis: 5%;
+        width: 25%
+      }
+
+      .card-xh-lg .card-header,
+      .card-xh-lg .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xf-lg .card-footer,
+      .card-xf-lg .card-img-bottom {
+        flex-basis: 0%;
+        width: 0%
+      }
+    }
+
+    @media (min-width:1200px) {
+
+      .card-x-xl .card-body,
+      .card-xf-xl .card-body,
+      .card-xh-xl .card-body {
+        flex-basis: 50%;
+        width: 50%
+      }
+
+      .card-x-xl .card-footer,
+      .card-x-xl .card-header,
+      .card-x-xl .card-img-bottom,
+      .card-x-xl .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xh-xl .card-header,
+      .card-xh-xl .card-img-top {
+        flex-basis: 0%;
+        width: 0%
+      }
+
+      .card-xf-xl .card-footer,
+      .card-xf-xl .card-img-bottom {
+        flex-basis: 0%;
+        width: 0%
+      }
+    }
+
+    .card-outer-soon {
+      position: absolute;
+      width: 140px;
       top: -7px;
       overflow: hidden;
       height: 140px;
     }
-    .card-outer-soon.soon-left{
-     left: -6px;
+
+    .card-outer-soon.soon-left {
+      left: -6px;
     }
-    .card-outer-soon.soon-right{
-     right: -6px;
+
+    .card-outer-soon.soon-right {
+      right: -6px;
     }
-    .card-soon{
+
+    .card-soon {
       padding: 10px 0px;
       width: 180px;
       position: absolute;
@@ -829,7 +875,13 @@
       transform: rotate(-44deg);
       display: inline-block;
     }
-    .card-outer-soon.soon-right .card-soon{ transform: rotate(44deg);left:auto;right:-43px}
+
+    .card-outer-soon.soon-right .card-soon {
+      transform: rotate(44deg);
+      left: auto;
+      right: -43px
+    }
+
     .card-soon:after,
     .card-soon:before {
       position: absolute;
@@ -842,42 +894,45 @@
       border-style: solid;
       border-width: 10px 10px 0px 0px;
       border-color: #741d1d transparent transparent transparent;
-  }
-    .card-soon:after{
-   left:auto;
+    }
+
+    .card-soon:after {
+      left: auto;
       right: 0px;
       bottom: -9px;
-  border-width: 0px 10px 10px 0px;
+      border-width: 0px 10px 10px 0px;
       border-color: transparent #741d1d transparent transparent;
-  }
+    }
+
     .card-outer-soon.soon-right .card-soon:after,
-     .card-outer-soon.soon-right .card-soon:before {
-   left: 0px;
+    .card-outer-soon.soon-right .card-soon:before {
+      left: 0px;
       bottom: -9px;
-   border-width: 10px 10px 0px 0px;
+      border-width: 10px 10px 0px 0px;
       border-color: #741d1d transparent transparent transparent;
-  }
-    .card-outer-soon.soon-right .card-soon:after{
-  left:auto;
+    }
+
+    .card-outer-soon.soon-right .card-soon:after {
+      left: auto;
       right: 2px;
       bottom: -9px;
-  border-width: 0px 10px 10px 0px;
+      border-width: 0px 10px 10px 0px;
       border-color: transparent #741d1d transparent transparent;
-  }
-</style>
+    } */
+  </style>
 
 
 
 
 
-  
 
 
-  
+
+
   <div class="container">
     <canvas id="pie-chart" width="800" height="450"></canvas>
   </div>
- 
+
 
   <script>
     $(document).ready(function () {
@@ -892,24 +947,24 @@
       var cortexProfitPerDay = ''
 
       $.ajax({
-            type: "get", url: "https://api.coingecko.com/api/v3/coins/cortex",
-            success: function (data, text) {
+        type: "get", url: "https://api.coingecko.com/api/v3/coins/cortex",
+        success: function (data, text) {
 
-              var results = data
-              var result = results.market_data.current_price.usd
-              var cortexPrice1 = result
-              var cortexPriceToString = cortexPrice1.toString().substring(0, 4)
-              var cortexPrice = cortexPriceToString
-              var cortexProfitPerDay1 = coinsPerday * cortexPrice
-              var cortexProfitPerDayString = cortexProfitPerDay1.toString();
-              cortexProfitPerDay = cortexProfitPerDayString.substring(0, 5)
-              $('.cortexPrice').html('Cortex Price <br>' + cortexPrice + '$')
-              $('.cortexProfitPerDay').html('Profit per 24h <br>' + cortexProfitPerDay + '$')
-            },
-            error: function (request, status, error) {
-              // alert(request.responseText);
-            }
-          })
+          var results = data
+          var result = results.market_data.current_price.usd
+          var cortexPrice1 = result
+          var cortexPriceToString = cortexPrice1.toString().substring(0, 4)
+          var cortexPrice = cortexPriceToString
+          var cortexProfitPerDay1 = coinsPerday * cortexPrice
+          var cortexProfitPerDayString = cortexProfitPerDay1.toString();
+          cortexProfitPerDay = cortexProfitPerDayString.substring(0, 5)
+          $('.cortexPrice').html('Cortex Price <br>' + cortexPrice + '$')
+          $('.cortexProfitPerDay').html('Profit per 24h <br>' + cortexProfitPerDay + '$')
+        },
+        error: function (request, status, error) {
+          // alert(request.responseText);
+        }
+      })
 
       // var ethermineHeight = '1100';
       // $('.card').css('height', ethermineHeight)
@@ -1051,7 +1106,7 @@
           $('.cortexTotalPaid').html('Total Paid <br>' + totalPaid)
           $('.cortexcurrentLuck').html('Current Luck <br>' + currentLuck)
 
-          
+
         },
         error: function (request, status, error) {
 
@@ -1126,31 +1181,31 @@
           // console.log(results[secondrig])
           // console.log(results[thirdrig])
 
-          if (results == null ) {
+          if (results == null) {
             console.log("No workers on Hiveon pool ETH")
             $('.hiveonContainer').hide() //IF ALL FAIL => HIDE
           } else {
-          var firsthashrate = results[firstrig].reportedHashrate
-          let secondhashrate = results[secondrig].reportedHashrate
-          let thirdhashrate = results[thirdrig].reportedHashrate
+            var firsthashrate = results[firstrig].reportedHashrate
+            let secondhashrate = results[secondrig].reportedHashrate
+            let thirdhashrate = results[thirdrig].reportedHashrate
 
-          var power = ''
-          if (hiveonCurrentHashRate >= 1000) {
-            power = 'GH/S'
-          } else {
-            power = 'MH/s'
+            var power = ''
+            if (hiveonCurrentHashRate >= 1000) {
+              power = 'GH/S'
+            } else {
+              power = 'MH/s'
+            }
+
+            $('.hiveonDate').html('Date <br>' + date)
+            $('.hiveonActiveWorkersOnline').html('Active Workers <br>' + hiveonActiveWorkersOnline)
+            $('.hiveonCurrentHashRate').html('Current HashRate <br>' + hiveonCurrentHashRate + ' ' + power)
+            $('.hiveonReportedHashrate').html('Reported HashRate <br>' + hiveonReportedHashrate + ' ' + power)
+            $('.hiveonStaleshares').html('Stale Shares <br>' + hiveonStaleShares)
+            $('.hiveonInvalidShares').html('Invalid Shares <br>' + hiveonInvalidShares)
+            $('.hiveonValidShares').html('Valid Shares <br>' + hiveonValidShares)
+            $('.hiveonProfit').html('Valid Shares <br>' + hiveonProfit)
+            $('.hiveonContainer').show() //IF ALL SUCCESS => SHOW
           }
-
-          $('.hiveonDate').html('Date <br>' + date)
-          $('.hiveonActiveWorkersOnline').html('Active Workers <br>' + hiveonActiveWorkersOnline)
-          $('.hiveonCurrentHashRate').html('Current HashRate <br>' + hiveonCurrentHashRate + ' ' + power)
-          $('.hiveonReportedHashrate').html('Reported HashRate <br>' + hiveonReportedHashrate + ' ' + power)
-          $('.hiveonStaleshares').html('Stale Shares <br>' + hiveonStaleShares)
-          $('.hiveonInvalidShares').html('Invalid Shares <br>' + hiveonInvalidShares)
-          $('.hiveonValidShares').html('Valid Shares <br>' + hiveonValidShares)
-          $('.hiveonProfit').html('Valid Shares <br>' + hiveonProfit)
-          $('.hiveonContainer').show() //IF ALL SUCCESS => SHOW
-        }
 
 
           setTimeout(

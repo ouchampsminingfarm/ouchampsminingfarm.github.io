@@ -6,6 +6,8 @@ for (i = 0; i < 7; ++i) {
     var formatedDate = ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + date.getFullYear();
     sevenDays.push(formatedDate)
 }
+
+//CONFLUX
 var ethValueUSD = ''
 var confluxCoins = ''
 var confluxValueUSD = ''
@@ -26,15 +28,15 @@ $.ajax({
                 // alert(request.responseText);
             }
         })
-        
-        
+
+
         $.ajax({
             type: "get", url: "https://confluxscan.io/v1/account/cfx:aaj22yvf10hgkf1ntc420m467k104t86ejnhfgzevx?fields=cfxTransferCount&fields=erc20TransferCount&fields=erc721TransferCount&fields=erc1155TransferCount&fields=stakingBalance",
             success: function (data, text) {
                 var results = data
-        
+
                 confluxCoins = results.cfxTransferCount
-        
+
             },
             error: function (request, status, error) {
                 // alert(request.responseText);
@@ -46,7 +48,10 @@ $.ajax({
         // alert(request.responseText);
     }
 })
+// END CONFLUX
 
+
+// BITCOIN
 var bitcoinPrice = ''
 var bitcoinPercentsevendays = ''
 $.ajax({
@@ -77,7 +82,10 @@ for (d = 0; d < sevenDays.length; ++d) {
         }
     })
 }
+// END BITCOIN
 
+
+// CORTEX
 var cortexPrice = ''
 var cortexPercentsevendays = ''
 var cortexValueUSD = ''
@@ -89,16 +97,16 @@ $.ajax({
         cortexPrice = results.market_data.current_price.usd
         var cortexTotalPaid = ''
 
-$.ajax({
-    type: "get", url: "https://ctxc.2miners.com/api/accounts/0x277e50882683b8e94585f0116d6806176304af6b",
-    success: function (data, text) {
-        var cortexResult = data
-        var cortexTotalPaid = (cortexResult.stats.paid.toString()) / 1000000000
-        cortexValueUSD = cortexTotalPaid * cortexPrice
-    },
-    error: function (request, status, error) {
-    }
-});
+        $.ajax({
+            type: "get", url: "https://ctxc.2miners.com/api/accounts/0x277e50882683b8e94585f0116d6806176304af6b",
+            success: function (data, text) {
+                var cortexResult = data
+                var cortexTotalPaid = (cortexResult.stats.paid.toString()) / 1000000000
+                cortexValueUSD = cortexTotalPaid * cortexPrice
+            },
+            error: function (request, status, error) {
+            }
+        });
         $('.cortexPrice').html(cortexPrice + '$')
         $('.cortexPercentsevendays').html(cortexPercentsevendays + '%')
     },
@@ -121,37 +129,34 @@ for (c = 0; c < sevenDays.length; ++c) {
         }
     })
 }
+// END CORTEX
+
 
 // Start of Ethereum Price API
-
+var ethPrice = 'ethereumPrice'
 var ethereumPrice = ''
 var ethereumPercentsevendays = ''
 $.ajax({
     type: "get", url: "https://api.coingecko.com/api/v3/coins/ethereum",
     success: function (data, text) {
         var results = data
-        //   console.log('results' + results)
         ethereumPrice = results.market_data.current_price.usd
+        localStorage.setItem(ethPrice, ethereumPrice);
         ethereumPercentsevendays = results.market_data.price_change_percentage_7d.toString().substring(0, 6)
-
         var etherscanAPIKey = '86ED21HSPWXVCKUQJNHI2XU3MY6JGFN5PX'
         var ethBalance = ''
-
         $.ajax({
             type: "get", url: "https://api.etherscan.io/api?module=account&action=balance&address=0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C&tag=latest&apikey=" + etherscanAPIKey,
             success: function (data, text) {
                 var results = data
                 ethBalance = (results.result) / 1000000000000000000
-                console.log(ethBalance)
-                console.log(ethereumPrice)
+                console.log('results eth wallet ' + results)
                 ethValueUSD = ethBalance * ethereumPrice
-
             },
             error: function (request, status, error) {
                 // alert(request.responseText);
             }
         })
-
         $('.ethereumPrice').html(ethereumPrice + '$')
         $('.ethereumPercentsevendays').html(ethereumPercentsevendays + '%')
     },
@@ -159,7 +164,6 @@ $.ajax({
         // alert(request.responseText);
     }
 })
-
 var ethereumDailyPrice = []
 var i;
 for (i = 0; i < sevenDays.length; ++i) {
@@ -175,21 +179,90 @@ for (i = 0; i < sevenDays.length; ++i) {
         }
     })
 }
+setTimeout(function () {
+    var payouts = []
+    $.ajax({
+        type: "get", url: "https://api.ethermine.org/miner/0x982A366CB0bFe6eA5C04A4017c839Ef83B02978C/dashboard/payouts",
+        success: function (data, text) {
+            var results = data.data.payouts
+            var numberOfPayouts = results.length
+            payouts.push(results)
+            var p;
+            var payoutindex = payouts[0]
+            console.log(payoutindex)
+            for (p = 0; p < payoutindex.length; ++p) {
+                var txhash = payoutindex[p].txHash
+                var shorttxhash = jQuery.trim(txhash).substring(0, 130).split(" ").slice(0, -1).join(" ") + "..."
+                console.log(txhash)
+                var transactionTime = payoutindex[p].paidOn
+                var transactionAmount = payoutindex[p].amount / 1000000000000000000
+                var tempEthereumPrice = localStorage.getItem(ethPrice);
+                var ethamount = transactionAmount * tempEthereumPrice
+                var ethamountostring = ethamount.toString().substring(0, 6)
+                function format_date(date) {
+                    month = date.getMonth();
+                    month = month + 1; //javascript date goes from 0 to 11
+                    if (month < 10) month = "0" + month; //adding the prefix
+                    year = date.getFullYear();
+                    day = date.getDate();
+                    hour = date.getHours();
+                    minutes = date.getMinutes();
+                    seconds = date.getSeconds();
+                    return day + "/" + month + "/" + year + " " + hour + ":" + minutes + ":" + seconds;
+                }
+                MyDate = new Date(transactionTime * 1000);
+                formatedDate = format_date(MyDate);
+                var transactionBlock = '<tr><td class="truncate">' + txhash + '</td><td>' + formatedDate + '</td><td>Completed</td><td>ETH : ' + transactionAmount + ' / ' + ethamountostring + ' €</td></tr>'
+                $('.dbkit-table').append(transactionBlock)
+            }
+        },
+        error: function (request, status, error) {
+            // alert(request.responseText);
+        }
+    })
+}, 1000);
 // END OF ETHEREUM PRICE API
 
 
+//START OF GOOGLE SHEET DATA
+var totalInvestement = ''
+
+$(document).ready(function () {
+    setTimeout(function () {
+    readData(); // Get the data from the google sheet
+}, 1000);
+});
 
 
+var spData = null;
+function doData(json) {
+    spData = json.feed.entry;
+}
 
+//Here we sort the data by row and columns
+function readData(parent) {
+    var data = spData;
+    var rowData = [];
+    for (var r = 0; r < data.length; r++) {
+        var cell = data[r]["gs$cell"];
+        var val = cell["$t"];
 
+        if (cell.col == 0) {
+            rowData = [];
+        }
+        // Adding all data to the array rowData
+        rowData.push(val);
+    }
+    totalInvestement = rowData[6]
+}
+//END OF GOOGLE SHEET DATA
 
 
 
 setTimeout(function () {
-    console.log(ethValueUSD+cortexValueUSD+confluxValueUSD)
-    var totalWallets = ethValueUSD+cortexValueUSD+confluxValueUSD
+    var totalWallets = ethValueUSD + cortexValueUSD + confluxValueUSD
     var totalWalletsToString = totalWallets.toString().substring(0, 7)
-    $('.total-wallet').html('Total Wallets : ' + totalWalletsToString +' $')
+    $('.total-wallet').html('Total Wallets : ' + totalWalletsToString + ' $')
     /*--------------  coin_sales1 start ------------*/
     if ($('#coin_sales1').length) {
         var ctx = document.getElementById("coin_sales1").getContext('2d');
@@ -368,65 +441,122 @@ setTimeout(function () {
     /*--------------  coin_sales3 End ------------*/
 
     /*--------------  overview-chart start ------------*/
-    if ($('#verview-shart').length) {
-        var myConfig = {
-            "type": "line",
+    // if ($('#verview-shart').length) {
+    //     var myConfig = {
+    //         "type": "line",
 
-            "scale-x": { //X-Axis
-                "labels": ["0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100"],
-                "label": {
-                    "font-size": 14,
-                    "offset-x": 0,
-                },
-                "item": { //Scale Items (scale values or labels)
-                    "font-size": 10,
-                },
-                "guide": { //Guides
-                    "visible": false,
-                    "line-style": "solid", //"solid", "dotted", "dashed", "dashdot"
-                    "alpha": 1
-                }
+    //         "scale-x": { //X-Axis
+    //             "label": {
+    //                 "font-size": 14,
+    //                 "offset-x": 0,
+    //             },
+    //             "item": { //Scale Items (scale values or labels)
+    //                 "font-size": 10,
+    //             },
+    //             "guide": { //Guides
+    //                 "visible": false,
+    //                 "line-style": "solid", //"solid", "dotted", "dashed", "dashdot"
+    //                 "alpha": 1
+    //             }
+    //         },
+    //         "plot": { "aspect": "spline" },
+    //         "series": [{
+    //             "values": [0, totalWallets],
+    //             "line-color": "#F0B41A",
+    //             /* "dotted" | "dashed" */
+    //             "line-width": 5 /* in pixels */,
+    //             "marker": { /* Marker object */
+    //                 "background-color": "#D79D3B",
+    //                 /* hexadecimal or RGB value */
+    //                 "size": 5,
+    //                 /* in pixels */
+    //                 "border-color": "#D79D3B",
+    //                 /* hexadecimal or RBG value */
+    //             }
+    //         },
+    //         {
+    //             "values": [0, totalInvestement],
+    //             "line-color": "#0884D9",
+    //             /* "dotted" | "dashed" */
+    //             "line-width": 5 /* in pixels */,
+    //             "marker": { /* Marker object */
+    //                 "background-color": "#067dce",
+    //                 /* hexadecimal or RGB value */
+    //                 "size": 5,
+    //                 /* in pixels */
+    //                 "border-color": "#067dce",
+    //                 /* hexadecimal or RBG value */
+    //             }
+    //         }
+    //         ]
+    //     };
+
+    //     zingchart.render({
+    //         id: 'verview-shart',
+    //         data: myConfig,
+    //         height: "100%",
+    //         width: "100%"
+    //     });
+    // }
+
+    /*--------------  bar chart 10 amchart start ------------*/
+    if ($('#ambarchart3').length) {
+        var chart = AmCharts.makeChart("ambarchart3", {
+            "type": "serial",
+            "theme": "light",
+            "categoryField": "year",
+            "rotate": true,
+            "startDuration": 1,
+            "categoryAxis": {
+                "gridPosition": "start",
+                "position": "left"
             },
-            "plot": { "aspect": "spline" },
-            "series": [{
-                "values": [20, 25, 30, 35, 45, 40, 40, 35, 25, 17, 40, 50],
-                "line-color": "#F0B41A",
-                /* "dotted" | "dashed" */
-                "line-width": 5 /* in pixels */,
-                "marker": { /* Marker object */
-                    "background-color": "#D79D3B",
-                    /* hexadecimal or RGB value */
-                    "size": 5,
-                    /* in pixels */
-                    "border-color": "#D79D3B",
-                    /* hexadecimal or RBG value */
-                }
+            "trendLines": [],
+            "graphs": [{
+                "balloonText": "Revenue:[[value]] $",
+                "fillAlphas": 0.8,
+                "id": "AmGraph-1",
+                "lineAlpha": 0.2,
+                "title": "Revenue",
+                "type": "column",
+                "valueField": "Revenue",
+                "fillColorsField": "color"
             },
             {
-                "values": [40, 45, 30, 20, 30, 35, 45, 55, 40, 30, 55, 30],
-                "line-color": "#0884D9",
-                /* "dotted" | "dashed" */
-                "line-width": 5 /* in pixels */,
-                "marker": { /* Marker object */
-                    "background-color": "#067dce",
-                    /* hexadecimal or RGB value */
-                    "size": 5,
-                    /* in pixels */
-                    "border-color": "#067dce",
-                    /* hexadecimal or RBG value */
-                }
+                "balloonText": "Investment:[[value]] €",
+                "fillAlphas": 0.8,
+                "id": "AmGraph-2",
+                "lineAlpha": 0.2,
+                "title": "Investment",
+                "type": "column",
+                "valueField": "Investment",
+                "fillColorsField": "color2"
             }
-            ]
-        };
+            ],
+            "guides": [],
+            "valueAxes": [{
+                "id": "ValueAxis-1",
+                "position": "top",
+                "axisAlpha": 0
+            }],
+            "allLabels": [],
+            "balloon": {},
+            "titles": [],
+            "dataProvider": [{
+                "year": 2021,
+                "Revenue": totalWallets,
+                "Investment": totalInvestement,
+                "color": "#7474f0",
+                "color2": "#C5C5FD"
+            }
+            ],
+            "export": {
+                "enabled": true
+            }
 
-        zingchart.render({
-            id: 'verview-shart',
-            data: myConfig,
-            height: "100%",
-            width: "100%"
         });
     }
-
+    /*--------------  bar chart 10 amchart END ------------*/
     /*--------------  overview-chart END ------------*/
 
     /*--------------  market status chart start ------------*/
@@ -2890,4 +3020,4 @@ setTimeout(function () {
         });
     }
     /*-------------- 7 Pie chart chartjs end ------------*/
-}, 3000);
+}, 5000);

@@ -2,3 +2,19 @@
     top: -10px;
     position: relative;
 }
+.custome-select {
+    display:none !important;
+}
+.amcharts-export-menu {
+    top: -45px;
+}
+.truncate {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    resize: horizontal;
+  }
+  .coin_distribution-graph-id0-label {
+    font-family: 'Roboto', sans-serif;
+  }
