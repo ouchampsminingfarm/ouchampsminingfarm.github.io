@@ -1,6 +1,6 @@
 var sevenDays = []
 var i;
-for (i = 0; i < 7; ++i) {
+for (i = 0; i < 6; ++i) {
     var date = new Date();
     date.setDate(date.getDate() - i);
     var formatedDate = ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '-' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '-' + date.getFullYear();
@@ -53,6 +53,7 @@ $.ajax({
 
 // BITCOIN
 var bitcoinPrice = ''
+var bitcoinPriceEUR = ''
 var bitcoinPercentsevendays = ''
 $.ajax({
     type: "get", url: "https://api.coingecko.com/api/v3/coins/bitcoin",
@@ -60,7 +61,8 @@ $.ajax({
         var results = data
         bitcoinPercentsevendays = results.market_data.price_change_percentage_7d.toString().substring(0, 6)
         bitcoinPrice = results.market_data.current_price.usd
-        $('.bitcoinPrice').html(bitcoinPrice + '$')
+        bitcoinPriceEUR = results.market_data.current_price.eur
+        $('.bitcoinPrice').html(bitcoinPrice + '$ <span style="font-variant: all-small-caps;"><br>'+ bitcoinPriceEUR +'€</span>')
         $('.bitcoinPercentsevendays').html(bitcoinPercentsevendays + '%')
     },
     error: function (request, status, error) {
@@ -87,6 +89,7 @@ for (d = 0; d < sevenDays.length; ++d) {
 
 // CORTEX
 var cortexPrice = ''
+var cortexPriceEUR = ''
 var cortexPercentsevendays = ''
 var cortexValueUSD = ''
 $.ajax({
@@ -95,6 +98,7 @@ $.ajax({
         var results = data
         cortexPercentsevendays = results.market_data.price_change_percentage_7d.toString().substring(0, 6)
         cortexPrice = results.market_data.current_price.usd
+        cortexPriceEUR = results.market_data.current_price.eur
         var cortexTotalPaid = ''
 
         $.ajax({
@@ -107,7 +111,7 @@ $.ajax({
             error: function (request, status, error) {
             }
         });
-        $('.cortexPrice').html(cortexPrice + '$')
+        $('.cortexPrice').html(cortexPrice + '$ <span style="font-variant: all-small-caps;"><br>'+ cortexPriceEUR +'€</span>')
         $('.cortexPercentsevendays').html(cortexPercentsevendays + '%')
     },
     error: function (request, status, error) {
@@ -135,12 +139,14 @@ for (c = 0; c < sevenDays.length; ++c) {
 // Start of Ethereum Price API
 var ethPrice = 'ethereumPrice'
 var ethereumPrice = ''
+var ethereumPriceEUR = ''
 var ethereumPercentsevendays = ''
 $.ajax({
     type: "get", url: "https://api.coingecko.com/api/v3/coins/ethereum",
     success: function (data, text) {
         var results = data
         ethereumPrice = results.market_data.current_price.usd
+        ethereumPriceEUR= results.market_data.current_price.eur
         localStorage.setItem(ethPrice, ethereumPrice);
         ethereumPercentsevendays = results.market_data.price_change_percentage_7d.toString().substring(0, 6)
         var etherscanAPIKey = '86ED21HSPWXVCKUQJNHI2XU3MY6JGFN5PX'
@@ -157,7 +163,7 @@ $.ajax({
                 // alert(request.responseText);
             }
         })
-        $('.ethereumPrice').html(ethereumPrice + '$')
+        $('.ethereumPrice').html(ethereumPrice + '$ <span style="font-variant: all-small-caps;"><br>'+ ethereumPriceEUR +'€</span>')
         $('.ethereumPercentsevendays').html(ethereumPercentsevendays + '%')
     },
     error: function (request, status, error) {
@@ -271,12 +277,12 @@ setTimeout(function () {
             type: 'line',
             // The data for our dataset
             data: {
-                labels: ["7days", "6days", "5days", "4days", "3days", "2days", "1day", "Today"],
+                labels: ["7d", "6d", "5d", "4d", "3d", "2d", "Now"],
                 datasets: [{
                     label: "Sales",
                     backgroundColor: "rgba(117, 19, 246, 0.1)",
                     borderColor: '#0b76b6',
-                    data: [bitcoinDailyPrice[6], bitcoinDailyPrice[5], bitcoinDailyPrice[4], bitcoinDailyPrice[3], bitcoinDailyPrice[2], bitcoinDailyPrice[1], bitcoinDailyPrice[0], bitcoinPrice],
+                    data: [bitcoinDailyPrice[5], bitcoinDailyPrice[4], bitcoinDailyPrice[3], bitcoinDailyPrice[2], bitcoinDailyPrice[1], bitcoinDailyPrice[0], bitcoinPrice],
                 }]
             },
             // Configuration options go here
@@ -329,12 +335,12 @@ setTimeout(function () {
             type: 'line',
             // The data for our dataset
             data: {
-                labels: ["7days", "6days", "5days", "4days", "3days", "2days", "1day", "Today"],
+                labels: ["7d", "6d", "5d", "4d", "3d", "2d", "Now"],
                 datasets: [{
                     label: "Sales",
                     backgroundColor: "rgba(240, 180, 26, 0.1)",
                     borderColor: '#F0B41A',
-                    data: [cortexDailyPrice[6], cortexDailyPrice[5], cortexDailyPrice[4], cortexDailyPrice[3], cortexDailyPrice[2], cortexDailyPrice[1], cortexDailyPrice[0], cortexPrice],
+                    data: [cortexDailyPrice[5], cortexDailyPrice[4], cortexDailyPrice[3], cortexDailyPrice[2], cortexDailyPrice[1], cortexDailyPrice[0], cortexPrice],
                 }]
             },
             // Configuration options go here
@@ -390,13 +396,13 @@ setTimeout(function () {
             type: 'line',
             // The data for our dataset
             data: {
-                labels: ["7days", "6days", "5days", "4days", "3days", "2days", "1day", "Today"],
+                labels: ["7d", "6d", "5d", "4d", "3d", "2d", "Now"],
                 datasets: [{
                     label: "Sales",
                     backgroundColor: "rgba(290, 163, 58, 0.1)",
                     borderColor: '#fd9d24',
                     fill: true,
-                    data: [ethereumDailyPrice[6], ethereumDailyPrice[5], ethereumDailyPrice[4], ethereumDailyPrice[3], ethereumDailyPrice[2], ethereumDailyPrice[1], ethereumDailyPrice[0], ethereumPrice]
+                    data: [ethereumDailyPrice[5], ethereumDailyPrice[4], ethereumDailyPrice[3], ethereumDailyPrice[2], ethereumDailyPrice[1], ethereumDailyPrice[0], ethereumPrice]
                 }]
             },
             // Configuration options go here
